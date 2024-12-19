@@ -1,0 +1,16 @@
+services:
+  eureka-server:
+    image: eureka-server
+    build:
+      context: .
+    ports:
+      - "8761:8761"
+    networks:
+      - microservice-network
+      - teamcity_default
+
+networks:
+  microservice-network:
+    external: true
+  teamcity_default:
+    external: true

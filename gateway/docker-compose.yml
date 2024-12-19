@@ -1,0 +1,16 @@
+services:
+  gateway:
+    image: gateway
+    build:
+      context: .
+    ports:
+      - "8085:8085"
+    networks:
+      - microservice-network
+      - teamcity_default
+
+networks:
+  microservice-network:
+    external: true
+  teamcity_default:
+    external: true
