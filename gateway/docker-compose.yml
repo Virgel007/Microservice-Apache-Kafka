@@ -1,8 +1,0 @@
-services:
-  gateway:
-    image: gateway
-    build:
-      context: .
-    ports:
-      - "8085:8085"
-

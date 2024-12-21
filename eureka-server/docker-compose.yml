@@ -1,7 +1,0 @@
-services:
-  eureka-server:
-    image: eureka-server
-    build:
-      context: .
-    ports:
-      - "8761:8761"

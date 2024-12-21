@@ -1,4 +1,4 @@
-package org.example.mc_orders.kafka;
+package org.example.mc_payment.kafka;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,7 @@ import ru.org.example.common.events.NotificationEvent;
 @AllArgsConstructor
 public class KafkaProducerService {
 
-    private static final String NOTIFICATION_TOPIC = "new_orders";
+    private static final String NOTIFICATION_TOPIC = "payed_orders";
 
     private final KafkaTemplate<String, NotificationEvent> kafkaTemplate;
 

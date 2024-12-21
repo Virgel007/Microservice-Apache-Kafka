@@ -5,7 +5,7 @@ eureka:
   client:
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://eureka-server:8761/eureka
 
 spring:
   application:
@@ -16,19 +16,7 @@ spring:
         corsConfigurations:
           '[/**]':
             allowedOrigins:
-              - "http://localhost:8080"
-              - "http://localhost:8085"
-              - "http://localhost:8082"
-              - "http://localhost:8090"
-              - "http://localhost:8091"
-              - "http://localhost:9092"
-              - "http://localhost:6379"
-              - "http://localhost:8077"
-              - "http://localhost:8081"
-              - "http://localhost:8761"
-              - "http://localhost:2181"
-              - "http://localhost:5432"
-              - "http://localhost:8083"
+              - "*"
             allowedMethods:
               - GET
               - POST
@@ -43,38 +31,22 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-
-        - id: friends-service
-          uri: lb://friends-service
+        - id: orders-service
+          uri: lb://orders-service
           predicates:
-            - Path=/api/v1/friends/**
+            - Path=/api/v1/orders/**
+
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - Path=/api/v1/payment/**
+
+        - id: shipping-service
+          uri: lb://shipping-service
+          predicates:
+            - Path=/api/v1/shipping/**
 
         - id: notifications-service
           uri: lb://notifications-service
           predicates:
             - Path=/api/v1/notifications/**
-
-        - id: account-service
-          uri: lb://account-service
-          predicates:
-            - Path=/api/v1/account/**
-
-        - id: dialog-service
-          uri: lb://dialog-service
-          predicates:
-            - Path=/api/v1/dialogs/**
-
-        - id: country-service
-          uri: lb://country-service
-          predicates:
-            - Path=/api/v1/geo/**
-
-        - id: auth-service
-          uri: lb://auth-service
-          predicates:
-            - Path=/api/v1/auth/**
-
-        - id: post-service
-          uri: lb://post-service
-          predicates:
-            - Path=/api/v1/post/**

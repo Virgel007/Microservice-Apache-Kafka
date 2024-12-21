@@ -1,6 +1,7 @@
 package org.example.mc_orders.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.mc_orders.kafka.KafkaProducerService;
 import org.example.mc_orders.model.Order;
 import org.example.mc_orders.model.Product;
@@ -18,6 +19,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
@@ -27,11 +29,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public String createOrder() {
+        log.info("Starting order creation process");
         Set<Product> products = new HashSet<>();
         for (int i = 0; i < 10; i++) {
             Product product = new Product();
             product.setProductId(UUID.randomUUID());
-            product.setPrice(new java.math.BigDecimal(Math.round(100 + Math.random() * 1900)));
+            product.setPrice(new BigDecimal(Math.round(100 + Math.random() * 1900)));
             product.setTitle(randomTitle());
             products.add(product);
         }
@@ -47,6 +50,7 @@ public class OrderServiceImpl implements OrderService {
         order.setItems(products);
 
         inMemoryOrders.put(order.getUserId(), order);
+        log.info("Order stored in memory: {}", order);
 
         NotificationDto notificationDto = new NotificationDto();
         notificationDto.setEventId(UUID.randomUUID());
@@ -58,9 +62,10 @@ public class OrderServiceImpl implements OrderService {
         notificationDto.setServiceType(ServiceType.ORDER);
 
         NotificationEvent notificationEvent = new NotificationEvent();
-        notificationEvent.setEventType("event_order");
         notificationEvent.setNotificationData(notificationDto);
         kafkaProducerService.sendEvent(notificationEvent);
+        log.info("Notification event sent: {}", notificationEvent);
+
         return "Order created";
     }
 

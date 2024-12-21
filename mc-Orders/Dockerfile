@@ -7,8 +7,8 @@ RUN mvn package -DskipTests
 
 FROM openjdk:17-oracle
 WORKDIR /app
-COPY target/gateway-0.0.1-SNAPSHOT.jar gateway.jar
-CMD ["java","-jar","gateway.jar"]
+COPY target/mc-Orders-0.0.1-SNAPSHOT.jar mc-Orders.jar
+CMD ["java","-jar","mc-Orders.jar"]
 
 
 

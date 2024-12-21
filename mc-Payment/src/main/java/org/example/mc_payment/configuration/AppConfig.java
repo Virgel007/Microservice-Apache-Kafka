@@ -1,4 +1,4 @@
-package org.example.mc_orders.configuration;
+package org.example.mc_payment.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
