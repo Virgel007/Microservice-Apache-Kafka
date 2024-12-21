@@ -7,8 +7,6 @@ import org.example.mc_notifications.model.NotificationStatus;
 import org.example.mc_notifications.service.NotificationService;
 import org.springframework.stereotype.Service;
 import ru.org.example.common.events.NotificationDto;
-import ru.org.example.common.events.NotificationEvent;
-import ru.org.example.common.events.ServiceType;
 
 import java.time.Instant;
 import java.util.UUID;

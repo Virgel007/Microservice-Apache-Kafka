@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class ApiPayment {
 
-    private final PaymentService paymentService;
-
     @GetMapping
     public ResponseEntity<String> obtainPaymentStatus() {
 
