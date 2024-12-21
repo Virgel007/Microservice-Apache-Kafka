@@ -1,0 +1,4 @@
+ru\org\example\common\events\ServiceType.class
+ru\org\example\common\events\NotificationDto.class
+ru\org\example\common\events\BaseEvent.class
+ru\org\example\common\events\NotificationEvent.class
