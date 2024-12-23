@@ -13,6 +13,7 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import ru.org.example.common.events.NotificationEvent;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
